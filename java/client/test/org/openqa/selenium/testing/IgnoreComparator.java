@@ -52,8 +52,8 @@ public class IgnoreComparator {
         System.out.println("TestUtilities.isOnGitHubActions() = " + TestUtilities.isOnGitHubActions());
         System.out.println("driver.gitHubActions() = " + driver.gitHubActions());
         return (ignored.contains(driver.value()) || driver.value() == Browser.ALL)
-               && (!driver.travis() || TestUtilities.isOnTravis())
-               && (!driver.gitHubActions() || TestUtilities.isOnGitHubActions())
+               && ((!driver.travis() || TestUtilities.isOnTravis())
+                   || (!driver.gitHubActions() || TestUtilities.isOnGitHubActions()))
                && isOpen(driver.issue());
       });
   }
