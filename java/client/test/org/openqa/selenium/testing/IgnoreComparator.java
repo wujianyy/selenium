@@ -47,10 +47,15 @@ public class IgnoreComparator {
 
   private boolean shouldIgnore(Stream<Ignore> ignoreList) {
     return ignoreList.anyMatch(
-      driver -> (ignored.contains(driver.value()) || driver.value() == Browser.ALL)
-                && (!driver.travis() || TestUtilities.isOnTravis())
-                && (!driver.gitHubActions() || TestUtilities.isOnGitHubActions())
-                && isOpen(driver.issue()));
+      driver -> {
+        System.out.println("System.getenv(\"GITHUB_ACTIONS\") = " + System.getenv("GITHUB_ACTIONS"));
+        System.out.println("TestUtilities.isOnGitHubActions() = " + TestUtilities.isOnGitHubActions());
+        System.out.println("driver.gitHubActions() = " + driver.gitHubActions());
+        return (ignored.contains(driver.value()) || driver.value() == Browser.ALL)
+               && (!driver.travis() || TestUtilities.isOnTravis())
+               && (!driver.gitHubActions() || TestUtilities.isOnGitHubActions())
+               && isOpen(driver.issue());
+      });
   }
 
   private boolean isOpen(String issue) {
