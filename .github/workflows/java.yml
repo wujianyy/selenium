@@ -38,3 +38,5 @@ jobs:
         uses: ./.github/actions/bazel
         with:
           command: test //java/client/test/org/openqa/selenium:WindowTest-chrome
+        env:
+          DISPLAY: :99
