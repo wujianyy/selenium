@@ -66,6 +66,7 @@ public class TestIgnorance {
                       ignoreComparator.shouldIgnore(method.getTestClass().getAnnotation(Ignore.class)) ||
                       ignoreComparator.shouldIgnore(method.getAnnotation(IgnoreList.class)) ||
                       ignoreComparator.shouldIgnore(method.getAnnotation(Ignore.class));
+    System.out.println("Method " + method + " is ignored: " + ignored);
 
     ignored |= isIgnoredBecauseOfJUnit4Ignore(method.getTestClass().getAnnotation(org.junit.Ignore.class));
     ignored |= isIgnoredBecauseOfJUnit4Ignore(method.getAnnotation(org.junit.Ignore.class));
