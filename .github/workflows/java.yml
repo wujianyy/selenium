@@ -32,6 +32,8 @@ jobs:
           java-version: '11'
       - name: Setup Chrome and chromedriver
         uses: ./.github/actions/setup-chrome
+      - name: Start XVFB
+        run: Xvfb :99 &
       - name: Run browser tests in Chrome
         uses: ./.github/actions/bazel
         with:

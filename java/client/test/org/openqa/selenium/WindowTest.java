@@ -119,7 +119,7 @@ public class WindowTest extends JUnit4TestBase {
   }
 
   @Test
-  @Ignore(value = CHROME, travis = true, gitHubActions = true)
+  @Ignore(value = CHROME, travis = true)
   @Ignore(EDGE)
   public void testCanMaximizeTheWindow() {
     // Browser window cannot be resized or moved on ANDROID (and most mobile platforms
